@@ -59,6 +59,10 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <F3> :NERDTreeToggle<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" show the dot files
+let NERDTreeShowHidden=1
+" NERDTree ignore
+let NERDTreeIgnore=['\.pyc$','\.swp$']
 
 " vim-nerdtree-tabs
 " auto open nerdtree when create new tab
