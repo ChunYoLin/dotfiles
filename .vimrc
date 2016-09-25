@@ -103,3 +103,5 @@ set ignorecase
 set hlsearch
 " set <leader>
 let mapleader=","
+" exit visual mode without delay 
+set timeoutlen=1000 ttimeoutlen=0
