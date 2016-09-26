@@ -172,5 +172,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PAT
 export TERM=screen-256color
 
 # auto launch tmux when new bash being created
-tmux
+case $- in *i*)
+	[ -z "$TMUX" ] && exec tmux
+esac
 
