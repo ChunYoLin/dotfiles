@@ -105,3 +105,13 @@ set hlsearch
 let mapleader=","
 " exit visual mode without delay 
 set timeoutlen=1000 ttimeoutlen=0
+
+" ================================================
+" custom mapping of original vim
+
+" go to next buffer
+nnoremap <leader>bn :bnext<CR>
+" go to previous buffer
+nnoremap <leader>bp :bprev<CR>
+" close current buffer and move to the previous one
+nnoremap <leader>bq :bp <BAR> bd #<CR>

@@ -173,6 +173,7 @@ export TERM=screen-256color
 
 # auto launch tmux when new bash being created
 case $- in *i*)
-	[ -z "$TMUX" ] && exec tmux
+	[ -z "$TMUX" ] && exec tmux 
+
 esac
 
