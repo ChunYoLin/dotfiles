@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
 fi
 
 # Path to the bash it configuration
-export BASH_IT="/home/chunyo/.bash_it"
+export BASH_IT="/Users/newslab/.bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -156,7 +156,7 @@ source $BASH_IT/bash_it.sh
 if [ -n "$cur" ]; then gcmd='grep "^$cur"' ; else gcmd=cat ; fi
 
 
-export NVM_DIR="/home/chunyo/.nvm"
+export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # cd with ls
@@ -176,4 +176,5 @@ case $- in *i*)
 	[ -z "$TMUX" ] && exec tmux 
 
 esac
-
+#PYTHONPATH
+export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages"
