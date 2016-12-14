@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
 fi
 
 # Path to the bash it configuration
-export BASH_IT="/Users/newslab/.bash-it"
+export BASH_IT="/home/chunyo/.bash_it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -177,4 +177,8 @@ case $- in *i*)
 
 esac
 #PYTHONPATH
-export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages"
+export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
+export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
+
+# added by Anaconda2 4.2.0 installer
+# export PATH="/home/chunyo/anaconda2/bin:$PATH"

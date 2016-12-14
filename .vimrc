@@ -50,6 +50,8 @@ let g:ycm_max_diagnostics_to_display = 30
 " set sign of warning and error
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+" toggle completion modes inside of insert mode through that key
+let g:ycm_semantic_completion_toggle = '<c-f>'
 
 " NerdTree -------------------
 " open a NERDTree automatically when vim starts up if no files were specified
@@ -133,3 +135,10 @@ endif
 if !isdirectory(&undodir)
 	call mkdir(&undodir, "p")
 endif
+" eliminate search results by <leader>q
+nnoremap <leader>q :noh<CR>
+" resize window qucikly
+nnoremap <Leader>- :resize -10<CR>
+nnoremap <Leader>+ :resize +10<CR>
+nnoremap <Leader>< :vertical resize -10<CR>
+nnoremap <Leader>> :vertical resize +10<CR>
