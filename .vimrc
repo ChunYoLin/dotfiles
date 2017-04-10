@@ -14,6 +14,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 't9md/vim-choosewin'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'lervag/vimtex'
 call vundle#end()
 filetype plugin indent on
 
@@ -81,6 +82,11 @@ let g:NERDSpaceDelims=1
 " vim-choosewin --------------------
 " invoke with '-'
 nmap  -  <Plug>(choosewin)
+
+" vim-latex---------------------
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+set shellslash
+let g:tex_flavor='latex'
 
 " ================================================
 " setting for vim basic
