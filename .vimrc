@@ -114,7 +114,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " go to next buffer
 nnoremap <leader>bn :bnext<CR>
 " go to previous buffer
-nnoremap <leader>bp :bprev<CR>
+nnoremap <leader>bb :bprev<CR>
 " close current buffer and move to the previous one
 nnoremap <leader>bq :bp <BAR> bd #<CR>
 set directory=~/.vim/dirs/tmp     " directory to place swap files in

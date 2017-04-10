@@ -182,3 +182,4 @@ export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
 
 # added by Anaconda2 4.2.0 installer
 # export PATH="/home/chunyo/anaconda2/bin:$PATH"
+unset GNOME_KEYRING_CONTROL
