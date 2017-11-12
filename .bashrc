@@ -165,10 +165,10 @@ function cd {
 }
 # opencv library path
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-
 # cuda path
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH="$PATH:/usr/local/cuda-8.0/"
+PATH="$PATH:/usr/local/cuda-8.0/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs"
 export TERM=screen-256color
 
 # auto launch tmux when new bash being created

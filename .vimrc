@@ -123,6 +123,8 @@ nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bb :bprev<CR>
 " close current buffer and move to the previous one
 nnoremap <leader>bq :bp <BAR> bd #<CR>
+" close current window and buffer
+nnoremap <leader>wq :bd<CR>
 set directory=~/.vim/dirs/tmp     " directory to place swap files in
 set backup                        " make backup files
 set backupdir=~/.vim/dirs/backups " where to put backup files
