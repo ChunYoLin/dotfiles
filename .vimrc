@@ -9,6 +9,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/fonts'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -25,15 +27,17 @@ filetype plugin indent on
 " set status line
 set laststatus=2
 " enable powerline-fonts
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
+" let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#branch#enabled=1
 " YouCompleteMe -------------------
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = 'python'
 let g:ycm_complete_in_comments=1
-"let g:ycm_collect_identifiers_from_tags_files=1
+" let g:ycm_collect_identifiers_from_tags_files=1
 " complete from word 0
 let g:ycm_min_num_of_chars_for_completion=1  
 " no pop up window
@@ -48,9 +52,13 @@ let g:ycm_key_invoke_completion = '<C-a>'
 nmap ,g :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>  
 " show warning and error
 let g:ycm_max_diagnostics_to_display = 30
+" set max number of completions
+let g:ycm_max_num_candidates = 10
 " set sign of warning and error
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+" turn off ycm diagnostic
+let g:ycm_show_diagnostics_ui = 0
 " toggle completion modes inside of insert mode through that key
 let g:ycm_semantic_completion_toggle = '<c-f>'
 
@@ -59,20 +67,24 @@ let g:ycm_semantic_completion_toggle = '<c-f>'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " F3 to open nerdtree
-map <F3> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR> 
+" F4 to find pwd
+map <F4> :NERDTreeFind<CR> 
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " show the dot files
 let NERDTreeShowHidden=1
 " NERDTree ignore
 let NERDTreeIgnore=['\.pyc$','\.swp$']
+" NERDTree show BookMarks
+let NERDTreeShowBookmarks=1
 
 " vim-nerdtree-tabs
 " auto open nerdtree when create new tab
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 " On startup, focus NERDTree if opening a directory, focus file if opening a
 " file. (When set to 2, always focus file window after startup).
-let g:nerdtree_tabs_smart_startup_focus=1
+" let g:nerdtree_tabs_smart_startup_focus=1
 
 " NerdCommentor -------------------
 let g:NERDSpaceDelims=1
@@ -91,6 +103,7 @@ let g:tex_flavor='latex'
 " ================================================
 " setting for vim basic
 
+set expandtab
 set tabstop=4
 set shiftwidth=4
 " let vim command can show by tab 
@@ -123,7 +136,7 @@ nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bb :bprev<CR>
 " close current buffer and move to the previous one
 nnoremap <leader>bq :bp <BAR> bd #<CR>
-" close current window and buffer
+" close window along with buffer
 nnoremap <leader>wq :bd<CR>
 set directory=~/.vim/dirs/tmp     " directory to place swap files in
 set backup                        " make backup files
@@ -150,3 +163,9 @@ nnoremap <Leader>- :resize -10<CR>
 nnoremap <Leader>+ :resize +10<CR>
 nnoremap <Leader>< :vertical resize -10<CR>
 nnoremap <Leader>> :vertical resize +10<CR>
+" fold code
+set foldmethod=syntax
+" clipboard shared with shell
+set clipboard=unnamedplus
+" set backspace attr 
+set backspace=indent,eol,start
