@@ -90,6 +90,10 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+#
+alias cdb='cd /home/chunyo/work/django/mysite'
+alias sb='source /home/chunyo/.bashrc'
+alias eb='vim /home/chunyo/.bashrc'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -177,9 +181,15 @@ case $- in *i*)
 
 esac
 #PYTHONPATH
-export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
-export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
+# export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
+# export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
 
 # added by Anaconda2 4.2.0 installer
 # export PATH="/home/chunyo/anaconda2/bin:$PATH"
 unset GNOME_KEYRING_CONTROL
+export CAFFE_ROOT=/home/chunyo/work/caffe
+
+# riscv
+PATH="$PATH:/home/chunyo/.local/riscv/bin"
+PATH="$PATH:/home/chunyo/.local/riscv/riscv32-unknown-elf/bin"
+

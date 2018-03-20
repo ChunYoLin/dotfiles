@@ -17,6 +17,9 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 't9md/vim-choosewin'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'lervag/vimtex'
+Plugin 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'tmhedberg/matchit'
 call vundle#end()
 filetype plugin indent on
 
@@ -64,8 +67,8 @@ let g:ycm_semantic_completion_toggle = '<c-f>'
 
 " NerdTree -------------------
 " open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " F3 to open nerdtree
 map <F3> :NERDTreeToggle<CR> 
 " F4 to find pwd
