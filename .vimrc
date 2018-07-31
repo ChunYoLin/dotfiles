@@ -20,6 +20,8 @@ Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
 Plugin 'othree/html5.vim'
 Plugin 'tmhedberg/matchit'
+Plugin 'tpope/vim-surround'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -30,7 +32,7 @@ filetype plugin indent on
 " set status line
 set laststatus=2
 " enable powerline-fonts
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -38,7 +40,7 @@ let g:airline#extensions#branch#enabled=1
 " YouCompleteMe -------------------
 let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = 'python'
+let g:ycm_python_binary_path = 'python3'
 let g:ycm_complete_in_comments=1
 " let g:ycm_collect_identifiers_from_tags_files=1
 " complete from word 0
@@ -170,5 +172,6 @@ nnoremap <Leader>> :vertical resize +10<CR>
 set foldmethod=syntax
 " clipboard shared with shell
 set clipboard=unnamedplus
+set clipboard=unnamed
 " set backspace attr 
 set backspace=indent,eol,start

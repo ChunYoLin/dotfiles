@@ -170,22 +170,27 @@ function cd {
 # opencv library path
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 # cuda path
-export PATH="$PATH:/usr/local/cuda-8.0/"
-PATH="$PATH:/usr/local/cuda-8.0/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs"
+# export PATH="$PATH:/usr/local/cuda-8.0/"
+# PATH="$PATH:/usr/local/cuda-8.0/bin"
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs"
+
+export PATH="$PATH:/usr/local/cuda-9.0/"
+PATH="$PATH:/usr/local/cuda-9.0/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64:/usr/local/cuda-9.0/lib64/stubs"
+export LD_LIBRARY_PATH=/usr/lib/nvidia-384
+
 export TERM=screen-256color
 
 # auto launch tmux when new bash being created
-case $- in *i*)
-	[ -z "$TMUX" ] && exec tmux 
+# case $- in *i*)
+	# [ -z "$TMUX" ] && exec tmux 
 
-esac
+# esac
 #PYTHONPATH
 # export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
 # export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
 
 # added by Anaconda2 4.2.0 installer
-# export PATH="/home/chunyo/anaconda2/bin:$PATH"
 unset GNOME_KEYRING_CONTROL
 export CAFFE_ROOT=/home/chunyo/work/caffe
 
@@ -193,3 +198,5 @@ export CAFFE_ROOT=/home/chunyo/work/caffe
 PATH="$PATH:/home/chunyo/.local/riscv/bin"
 PATH="$PATH:/home/chunyo/.local/riscv/riscv32-unknown-elf/bin"
 
+LLVM_CONFIG="/usr/lib/llvm-3.8/bin/llvm-config"
+export PATH="/home/chunyo/anaconda3/bin:$PATH"
