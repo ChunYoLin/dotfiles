@@ -182,3 +182,8 @@ set clipboard=unnamed
 set backspace=indent,eol,start
 " set tabstop for specefic filetype
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+" remap Ctrl-hjkl to arrow
+inoremap <c-k> <up>
+inoremap <c-j> <down>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
