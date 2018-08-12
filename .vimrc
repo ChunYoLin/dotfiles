@@ -42,7 +42,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#branch#enabled=1
 " YouCompleteMe -------------------
-let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/Users/chunyo/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = 'python3'
 let g:ycm_complete_in_comments=1
@@ -177,9 +177,13 @@ nnoremap <Leader>> :vertical resize +10<CR>
 " fold code
 set foldmethod=syntax
 " clipboard shared with shell
-set clipboard=unnamedplus
 set clipboard=unnamed
 " set backspace attr 
 set backspace=indent,eol,start
 " set tabstop for specefic filetype
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+" remap Ctrl-hjkl to arrow
+inoremap <c-k> <up>
+inoremap <c-j> <down>
+inoremap <c-h> <left>
+inoremap <c-l> <right>

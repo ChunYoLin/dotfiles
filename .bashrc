@@ -90,10 +90,8 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-#
-alias cdb='cd /home/chunyo/work/django/mysite'
-alias sb='source /home/chunyo/.bashrc'
-alias eb='vim /home/chunyo/.bashrc'
+alias sb='source ~/.bash_profile'
+alias eb='vim ~/.bash_profile'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -189,14 +187,6 @@ export TERM=screen-256color
 
 # added by Anaconda2 4.2.0 installer
 unset GNOME_KEYRING_CONTROL
-export CAFFE_ROOT=/home/chunyo/work/caffe
-
-# riscv
-PATH="$PATH:/home/chunyo/.local/riscv/bin"
-PATH="$PATH:/home/chunyo/.local/riscv/riscv32-unknown-elf/bin"
-
-LLVM_CONFIG="/usr/lib/llvm-3.8/bin/llvm-config"
-export PATH="/home/chunyo/anaconda3/bin:$PATH"
-
-export NVM_DIR="/home/chunyo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export CLICOLOR='true'
+# added by Anaconda3 installer
+export PATH="/Users/chunyo/anaconda3/bin:$PATH"
