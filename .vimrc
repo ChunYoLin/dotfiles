@@ -47,17 +47,17 @@ let g:ycm_python_binary_path = 'python3'
 let g:ycm_complete_in_comments=1
 " let g:ycm_collect_identifiers_from_tags_files=1
 " complete from word 0
-let g:ycm_min_num_of_chars_for_completion=1  
+let g:ycm_min_num_of_chars_for_completion=1
 " no pop up window
 set completeopt-=preview
 " no buffer
-let g:ycm_cache_omnifunc=0  
+let g:ycm_cache_omnifunc=0
 " syntax completion
 let g:ycm_seed_identifiers_with_syntax=1
 " Ctrl-space to Ctrl-a
 let g:ycm_key_invoke_completion = '<C-a>'
 " "+g to the definition of cursor word
-nmap ,g :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>  
+nmap ,g :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 " show warning and error
 let g:ycm_max_diagnostics_to_display = 30
 " set max number of completions
@@ -75,9 +75,9 @@ let g:ycm_semantic_completion_toggle = '<c-f>'
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " F3 to open nerdtree
-map <F3> :NERDTreeToggle<CR> 
+map <F3> :NERDTreeToggle<CR>
 " F4 to find pwd
-map <F4> :NERDTreeFind<CR> 
+map <F4> :NERDTreeFind<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " show the dot files
@@ -109,6 +109,10 @@ set shellslash
 let g:tex_flavor='latex'
 " vim-tagbar
 nmap <F12> :TagbarToggle<CR>
+" vim-autoformat---------------------
+let g:formatdef_my_custom_cpp = '"astyle --indent-classes --style=allman --style=bsd --style=break"'
+let g:formatters_cpp = ['my_custom_cpp']
+nnoremap <Tab> :Autoformat<CR>
 
 " ================================================
 " setting for vim basic
@@ -116,25 +120,25 @@ nmap <F12> :TagbarToggle<CR>
 set expandtab
 set tabstop=4
 set shiftwidth=4
-" let vim command can show by tab 
+" let vim command can show by tab
 set wildmode=longest,list
 set wildmenu
 " 256 color for vim
 set t_Co=256
-" colorscheme 
+" colorscheme
 syntax enable
-colorscheme molokai 
+colorscheme molokai
 " show line number
 set number
 " realtime search
 set incsearch
-" don't care for word case while searching 
+" don't care for word case while searching
 set ignorecase
 " highlight searching result
 set hlsearch
 " set <leader>
 let mapleader=","
-" exit visual mode without delay 
+" exit visual mode without delay
 set timeoutlen=1000 ttimeoutlen=0
 
 " ================================================
@@ -158,13 +162,13 @@ set viminfo+=n~/.vim/dirs/viminfo
 let g:yankring_history_dir = '~/.vim/dirs/'
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)
-	call mkdir(&backupdir, "p")
+    call mkdir(&backupdir, "p")
 endif
 if !isdirectory(&directory)
-	call mkdir(&directory, "p")
+    call mkdir(&directory, "p")
 endif
 if !isdirectory(&undodir)
-	call mkdir(&undodir, "p")
+    call mkdir(&undodir, "p")
 endif
 " eliminate search results by <leader>q
 nnoremap <leader>q :noh<CR>
@@ -178,7 +182,7 @@ set foldmethod=syntax
 " clipboard shared with shell
 set clipboard=unnamedplus
 set clipboard=unnamed
-" set backspace attr 
+" set backspace attr
 set backspace=indent,eol,start
 " set tabstop for specefic filetype
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
