@@ -110,6 +110,11 @@ set shellslash
 let g:tex_flavor='latex'
 " vim-tagbar
 nmap <F12> :TagbarToggle<CR>
+"
+" vim-autoformat---------------------
+let g:formatdef_my_custom_cpp = '"astyle --indent-classes --style=allman --style=bsd --style=break"'
+let g:formatters_cpp = ['my_custom_cpp']
+nnoremap <Tab> :Autoformat<CR>
 
 " ================================================
 " setting for vim basic
