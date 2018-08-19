@@ -110,7 +110,7 @@ let g:tex_flavor='latex'
 " vim-tagbar
 nmap <F12> :TagbarToggle<CR>
 " vim-autoformat---------------------
-let g:formatdef_my_custom_cpp = '"astyle --indent-classes --style=allman --style=bsd --style=break"'
+let g:formatdef_my_custom_cpp = '"astyle --mode=c --style=allman --indent-classes --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --pad-oper"'
 let g:formatters_cpp = ['my_custom_cpp']
 nnoremap <Tab> :Autoformat<CR>
 
