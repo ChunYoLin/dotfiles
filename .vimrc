@@ -112,6 +112,8 @@ nmap <F12> :TagbarToggle<CR>
 " vim-autoformat---------------------
 let g:formatdef_my_custom_cpp = '"astyle --mode=c --style=allman --indent-classes --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --pad-oper"'
 let g:formatters_cpp = ['my_custom_cpp']
+let g:formatdef_autopep8 = "'autopep8  --max-line-length 160 - --range '.a:firstline.' '.a:lastline"
+let g:formatters_python = ['autopep8']
 nnoremap <Tab> :Autoformat<CR>
 
 " ================================================
