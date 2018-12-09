@@ -1,5 +1,7 @@
 
 " filetype plugin on
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -25,6 +27,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'dag/vim-fish'
+Plugin 'derekwyatt/vim-scala'
 call vundle#end()
 filetype plugin indent on
 
@@ -110,7 +113,7 @@ let g:tex_flavor='latex'
 " vim-tagbar
 nmap <F12> :TagbarToggle<CR>
 " vim-autoformat---------------------
-let g:formatdef_my_custom_cpp = '"astyle --mode=c --style=allman --indent-classes --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --pad-oper"'
+let g:formatdef_my_custom_cpp = '"astyle --mode=c --style=allman --indent-classes --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --pad-comma --pad-header"'
 let g:formatters_cpp = ['my_custom_cpp']
 let g:formatdef_autopep8 = "'autopep8  --max-line-length 160 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
