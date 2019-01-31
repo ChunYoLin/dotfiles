@@ -190,3 +190,6 @@ unset GNOME_KEYRING_CONTROL
 export CLICOLOR='true'
 # added by Anaconda3 installer
 export PATH="/Users/chunyo/anaconda3/bin:$PATH"
+# golang
+export PATH="$PATH:/Users/chunyo/package/go/bin"
+export GOROOT_BOOTSTRAP="/Users/chunyo/package/go"

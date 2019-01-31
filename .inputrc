@@ -1,4 +1,16 @@
+set editing-mode vi
+set keymap vi-command
 ## arrow up
-"\e[A":history-search-backward
+"k":history-search-backward
 ### arrow down
-"\e[B":history-search-forward
+"j":history-search-forward
+
+set keymap vi-insert
+## arrow up
+"\C-k":history-search-backward
+### arrow down
+"\C-j":history-search-forward
+## move forward
+"\C-l":forward-char
+## move backward
+"\C-h":backward-char

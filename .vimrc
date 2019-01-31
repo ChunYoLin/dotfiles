@@ -115,6 +115,8 @@ nmap <F12> :TagbarToggle<CR>
 let g:formatdef_my_custom_cpp = '"astyle --indent-classes --style=allman --style=bsd --style=break"'
 let g:formatters_cpp = ['my_custom_cpp']
 nnoremap <Tab> :Autoformat<CR>
+" vim-tagbar
+map <F12> :TagbarToggle<CR>
 
 " ================================================
 " setting for vim basic
