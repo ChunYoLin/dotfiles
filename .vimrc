@@ -1,5 +1,5 @@
 
-filetype plugin on
+" filetype plugin on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -21,7 +21,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'othree/html5.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-surround'
-
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
+Plugin 'dag/vim-fish'
 call vundle#end()
 filetype plugin indent on
 

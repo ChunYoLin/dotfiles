@@ -1,3 +1,6 @@
+set SCM_GIT_SHOW_DETAILS "true"
+
+
 set SCM_THEME_PROMPT_DIRTY ' ✗'
 set SCM_THEME_PROMPT_CLEAN ' ✓'
 set SCM_THEME_PROMPT_PREFIX ' |'
@@ -83,6 +86,11 @@ function _git-upstream-branch-gone
     test (git status -s -b | sed -e 's/.* //') = "[gone]"
 end
 
+function _git-hide-status
+    # test (git config --get bash-it.hide-status) = "1"
+    return "0"
+end
+
 function _git-status 
     git status --porcelain -uno 2> /dev/null
 end
@@ -120,11 +128,16 @@ function _git-remote-info
         set same_branch_name true
     end
 
-    if test $same_branch_name != "true"
-        set remote_info (_git-upstream)
-    else
-        set remote_info (_git-upstream-remote)
+    if test (_git-num-remotes) -ge 2
+        if test $same_branch_name != "true"
+            set remote_info (_git-upstream)
+        else
+            set remote_info (_git-upstream-remote)
+        end
+    else if test $same_branch_name != "true"
+        set remote_info (_git-upstream-branch) 
     end
+
     if test $remote_info
         if _git-upstream-branch-gone
             set branch_prefix $SCM_THEME_BRANCH_GONE_PREFIX
@@ -132,6 +145,8 @@ function _git-remote-info
             set branch_prefix $SCM_THEME_BRANCH_TRACK_PREFIX
         end
         echo $branch_prefix$remote_info
+    else
+        echo ""
     end
 end
 
@@ -177,18 +192,50 @@ function git_prompt_vars
         else
             set -g detached_prefix $SCM_THEME_DETACHED_PREFIX
         end
-        set -g SCM_BRANCH $detached_prefix(_git-friendly-ref)
+        set -g SCM_BRANCH "$detached_prefix"(_git-friendly-ref)
     end
     set IFS \t
     echo (_git-upstream-behind-ahead)| read commits_behind commits_ahead
 
     if test $commits_ahead -gt 0
-        set -g SCM_BRANCH $SCM_BRANCH $SCM_GIT_AHEAD_CHAR$commits_ahead
+        set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_AHEAD_CHAR$commits_ahead"
     end
     set -g stash_count (git stash list 2> /dev/null | wc -l | tr -d ' ')
+    if test $stash_count -gt 0 
+        set -g SCM_BRANCH  "$SCM_BRANCH $SCM_GIT_STASH_CHAR_PREFIX$stash_count$SCM_GIT_STASH_CHAR_SUFFIX"
+    end
+
+    set -g SCM_STATE $SCM_THEME_PROMPT_CLEAN
+
+    if test ! (_git-hide-status)
+        set IFS \t
+        echo (_git-status-counts)| read untracked_count unstaged_count staged_count
+        if test $untracked_count -gt 0 -o $unstaged_count -gt 0 -o $staged_count -gt 0
+            set -g SCM_DIRTY 1
+            if test $SCM_GIT_SHOW_DETAILS = "true"
+                if test $staged_count -gt 0 
+                    set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_STAGED_CHAR$staged_count"
+                    set -g SCM_DIRTY 3
+                end
+                 if test $unstaged_count -gt 0
+                    set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_UNSTAGED_CHAR$unstaged_count"
+                    set -g SCM_DIRTY 2
+                end
+                if test $untracked_count -gt 0 
+                    set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_UNTRACKED_CHAR$untracked_count"
+                    set -g SCM_DIRTY 1
+                end
+            end
+            set -g SCM_STATE $SCM_THEME_PROMPT_DIRTY
+        end
+    end
+    set -g SCM_PREFIX $SCM_THEME_PROMPT_PREFIX
+    set -g SCM_SUFFIX $SCM_THEME_PROMPT_SUFFIX
+
+    set -g SCM_CHANGE (_git-short-sha 2>/dev/null || echo "")
 end
 
-function Test
+function git_prompt_info
     git_prompt_vars
-    echo $SCM_BRANCH
+    echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
 end
