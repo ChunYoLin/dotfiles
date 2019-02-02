@@ -1,7 +1,9 @@
+set -g SCM 'none'
 set -g SCM_GIT_SHOW_DETAILS "true"
+set -g SCM_GIT_IGNORE_UNTRACKED "false"
 
 set -g SCM_THEME_PROMPT_DIRTY " $echo_bold_red✗$light_grey"
-set -g SCM_THEME_PROMPT_CLEAN (set_color green)" ✓$light_grey" 
+set -g SCM_THEME_PROMPT_CLEAN " $echo_green✓$light_grey" 
 set -g SCM_THEME_PROMPT_PREFIX ''
 set -g SCM_THEME_PROMPT_SUFFIX ''
 set -g SCM_THEME_BRANCH_PREFIX ''
@@ -15,7 +17,7 @@ set -g SCM_THEME_CHAR_PREFIX ''
 set -g SCM_THEME_CHAR_SUFFIX ''
 
 set -g SCM_GIT 'git'
-set -g SCM_GIT_CHAR (set_color green)"±$light_grey" 
+set -g SCM_GIT_CHAR "$echo_green±$light_grey" 
 set -g SCM_GIT_DETACHED_CHAR '⌿'
 set -g SCM_GIT_AHEAD_CHAR "↑"
 set -g SCM_GIT_BEHIND_CHAR "↓"
@@ -30,7 +32,7 @@ function _git-symbolic-ref
 end
 
 function _git-branch
-    git symbolic-ref -q --short HEAD 2> /dev/null
+    git symbolic-ref -q --short HEAD 2> /dev/null || return 1
 end
 
 function _git-tag
@@ -46,10 +48,7 @@ function _git-short-sha
 end
 
 function _git-friendly-ref
-    _git-branch
-    or _git-tag
-    or _git-commit-description
-    or _git-short-sha
+    _git-branch || _git-tag || _git-commit-description || _git-short-sha
 end
 
 function _git-num-remotes
@@ -57,16 +56,14 @@ function _git-num-remotes
 end
 
 function _git-upstream
-    set ref (_git-symbolic-ref)
+    set ref (_git-symbolic-ref) || return 1
     git for-each-ref --format="%(upstream:short)" "$ref"
 end
 
 function _git-upstream-remote 
-    set upstream (_git-upstream)
-    or return 1
+    set upstream (_git-upstream) || return 1
 
-    set branch (_git-upstream-branch)
-    or return 1
+    set branch (_git-upstream-branch) || return 1
 
     echo "$upstream/$branch"
 end
@@ -190,17 +187,19 @@ function git_prompt_vars
     else
         set -g SCM_GIT_DETACHED "true"
         if test (_git-tag)
-            set -g detached_prefix $SCM_THEME_TAG_PREFIX
+            set -g detached_prefix "$SCM_THEME_TAG_PREFIX"
         else
-            set -g detached_prefix $SCM_THEME_DETACHED_PREFIX
+            set -g detached_prefix "$SCM_THEME_DETACHED_PREFIX"
         end
         set -g SCM_BRANCH "$detached_prefix"(_git-friendly-ref)
     end
     set IFS \t
     echo (_git-upstream-behind-ahead)| read commits_behind commits_ahead
 
-    if test $commits_ahead -gt 0
-        set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_AHEAD_CHAR$commits_ahead"
+    if test (_git-upstream-behind-ahead)
+        if test $commits_ahead -gt 0
+            set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_AHEAD_CHAR$commits_ahead"
+        end
     end
     set -g stash_count (git stash list 2> /dev/null | wc -l | tr -d ' ')
     if test $stash_count -gt 0 
@@ -239,5 +238,20 @@ end
 
 function git_prompt_info
     git_prompt_vars
-    echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
+    echo "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
+end
+
+function scm_check
+    if test -f .git/HEAD
+        set -g SCM "git"
+    else if test (git rev-parse --is-inside-work-tree 2> /dev/null)
+        set -g SCM "git"
+    end
+end
+
+function scm_prompt_info
+    scm_check
+    if test $SCM = "git"
+        echo -e "["$SCM_GIT_CHAR(git_prompt_info)"]"
+    end
 end

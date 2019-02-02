@@ -20,6 +20,6 @@ function fish_prompt
     set -g fish_prompt_pwd_dir_length 0
     printf '%s' (prompt_pwd)
     set_color normal
-    printf ' [%s%s] ' $SCM_GIT_CHAR (git_prompt_info)
+    printf ' %s ' (scm_prompt_info)
     set_color normal
 end
