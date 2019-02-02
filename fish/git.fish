@@ -91,7 +91,10 @@ function _git-hide-status
 end
 
 function _git-status 
-    git status --porcelain -uno 2> /dev/null
+    if test $SCM_GIT_IGNORE_UNTRACKED = "true"
+        set -l git_status_flags "-uno"
+    end
+    git status --porcelain $git_status_flags 2> /dev/null
 end
 
 function _git-status-counts
