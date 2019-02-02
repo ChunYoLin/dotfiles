@@ -200,6 +200,9 @@ function git_prompt_vars
         if test $commits_ahead -gt 0
             set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_AHEAD_CHAR$commits_ahead"
         end
+        if test $commits_behind -gt 0
+            set -g SCM_BRANCH "$SCM_BRANCH $SCM_GIT_BEHIND_CHAR$commits_behind"
+        end
     end
     set -g stash_count (git stash list 2> /dev/null | wc -l | tr -d ' ')
     if test $stash_count -gt 0 
