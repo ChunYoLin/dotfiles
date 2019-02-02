@@ -23,3 +23,32 @@ function fish_prompt
     printf ' %s ' (scm_prompt_info)
     set_color normal
 end
+
+set -x NVM_DIR "~/.nvm"
+test -s "$NVM_DIR/nvm.sh"  && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# cd with ls
+function cd
+	builtin cd && ls -F
+end
+# opencv library path
+set -x LD_LIBRARY_PATH  $LD_LIBRARY_PATH:/usr/local/lib
+# cuda path
+set -x PATH  "$PATH:/usr/local/cuda-8.0/"
+set -x PATH  "$PATH:/usr/local/cuda-8.0/bin"
+set -x LD_LIBRARY_PATH  "$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs"
+set -x TERM  screen-256color
+
+#PYTHONPATH
+set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
+set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/dist-packages"
+
+# added by Anaconda2 4.2.0 installer
+# set -x PATH  "/home/chunyo/anaconda2/bin:$PATH"
+set -e GNOME_KEYRING_CONTROL
+set -x CLICOLOR  'true'
+# added by Anaconda3 installer
+set -x PATH  "/Users/chunyo/anaconda3/bin:$PATH"
+# golang
+set -x PATH  "$PATH:/Users/chunyo/package/go/bin"
+set -x GOROOT_BOOTSTRAP  "/Users/chunyo/package/go"
