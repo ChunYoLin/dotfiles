@@ -249,6 +249,8 @@ function scm_check
         set -g SCM "git"
     else if test (git rev-parse --is-inside-work-tree 2> /dev/null)
         set -g SCM "git"
+    else
+        set -g SCM "none"
     end
 end
 

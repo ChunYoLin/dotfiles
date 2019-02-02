@@ -29,7 +29,7 @@ test -s "$NVM_DIR/nvm.sh"  && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # cd with ls
 function cd
-	builtin cd && ls -F
+	builtin cd $argv && ls -F
 end
 # opencv library path
 set -x LD_LIBRARY_PATH  $LD_LIBRARY_PATH:/usr/local/lib
