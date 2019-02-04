@@ -120,6 +120,7 @@ end
 
 function _git-remote-info
     if test (_git-upstream) = ""
+        echo ""
         return
     end
 
