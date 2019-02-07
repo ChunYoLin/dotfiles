@@ -119,26 +119,29 @@ function _git-status-counts
 end
 
 function _git-remote-info
-    if test (_git-upstream) = ""
+    set u (_git-upstream)
+    if test "$u" = ""
         echo ""
         return
     end
 
-    if test (_git-branch) = (_git-upstream-branch)
+    set b (_git-branch)
+    set ub (_git-upstream-branch)
+    if test "$b" = "$ub"
         set same_branch_name true
     end
 
     if test (_git-num-remotes) -ge 2
-        if test $same_branch_name != "true"
+        if test "$same_branch_name" != "true"
             set remote_info (_git-upstream)
         else
             set remote_info (_git-upstream-remote)
         end
-    else if test $same_branch_name != "true"
+    else if test "$same_branch_name" != "true"
         set remote_info (_git-upstream-branch) 
     end
 
-    if test $remote_info
+    if test -n "$remote_info"
         if _git-upstream-branch-gone
             set branch_prefix $SCM_THEME_BRANCH_GONE_PREFIX
         else

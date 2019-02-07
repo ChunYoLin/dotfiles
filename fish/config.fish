@@ -28,9 +28,11 @@ set -x NVM_DIR "~/.nvm"
 test -s "$NVM_DIR/nvm.sh"  && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # cd with ls
-function cd
-	builtin cd $argv && ls -F
+function chpwd --on-variable PWD
+  status --is-command-substitution; and return
+  ll
 end
+
 # opencv library path
 set -x LD_LIBRARY_PATH  $LD_LIBRARY_PATH:/usr/local/lib
 # cuda path
