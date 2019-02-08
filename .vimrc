@@ -178,3 +178,5 @@ set clipboard=unnamedplus
 set clipboard=unnamed
 " set backspace attr 
 set backspace=indent,eol,start
+" set tabstop for specefic filetype
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
