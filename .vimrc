@@ -24,10 +24,10 @@ Plugin 'othree/html5.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-surround'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'fatih/vim-go'
-Plugin 'majutsushi/tagbar'
 Plugin 'dag/vim-fish'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
 
