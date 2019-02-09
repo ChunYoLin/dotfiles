@@ -107,6 +107,8 @@ nmap  -  <Plug>(choosewin)
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 set shellslash
 let g:tex_flavor='latex'
+" vim-tagbar
+nmap <F12> :TagbarToggle<CR>
 
 " ================================================
 " setting for vim basic
