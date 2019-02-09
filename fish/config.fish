@@ -35,23 +35,42 @@ function chpwd --on-variable PWD
 end
 
 # opencv library path
-set -x LD_LIBRARY_PATH  $LD_LIBRARY_PATH:/usr/local/lib
+set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
 # cuda path
-set -x PATH  "$PATH:/usr/local/cuda-8.0/"
-set -x PATH  "$PATH:/usr/local/cuda-8.0/bin"
-set -x LD_LIBRARY_PATH  "$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs"
-set -x TERM  screen-256color
+# export PATH="$PATH:/usr/local/cuda-8.0/"
+# PATH="$PATH:/usr/local/cuda-8.0/bin"
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs"
 
+set -x PATH "$PATH:/usr/local/cuda-9.0/"
+set -x PATH "$PATH:/usr/local/cuda-9.0/bin"
+set -x LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64:/usr/local/cuda-9.0/lib64/stubs"
+set -x LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/usr/lib/nvidia-384"
+
+set -x TERM screen-256color
+
+# auto launch tmux when new bash being created
+# case $- in *i*)
+	# [ -z "$TMUX" ] && exec tmux 
+
+# esac
 #PYTHONPATH
-set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
-set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/dist-packages"
+# set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
+# set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
 
 # added by Anaconda2 4.2.0 installer
-# set -x PATH  "/home/chunyo/anaconda2/bin:$PATH"
 set -e GNOME_KEYRING_CONTROL
-set -x CLICOLOR  'true'
-# added by Anaconda3 installer
-set -x PATH  "/Users/chunyo/anaconda3/bin:$PATH"
-# golang
-set -x PATH  "$PATH:/Users/chunyo/package/go/bin"
-set -x GOROOT_BOOTSTRAP  "/Users/chunyo/package/go"
+set -x  CAFFE_ROOT /home/chunyo/work/caffe
+set -x  PATH "/home/chunyo/anaconda3/bin:$PATH"
+source /home/chunyo/anaconda3/etc/fish/conf.d/conda.fish
+
+# riscv
+set -x PATH "$PATH:/home/chunyo/.local/riscv/bin"
+set -x PATH "$PATH:/home/chunyo/.local/riscv/riscv32-unknown-elf/bin"
+
+set -x LLVM_CONFIG "/usr/lib/llvm-3.8/bin/llvm-config"
+
+set -x  NVM_DIR "/home/chunyo/.nvm"
+
+function nvm
+   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+end
