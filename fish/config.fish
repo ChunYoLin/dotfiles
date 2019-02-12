@@ -74,3 +74,5 @@ set -x  NVM_DIR "/home/chunyo/.nvm"
 function nvm
    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
+set -x GOPATH ~/go
+set -x PATH $PATH:$GOPATH/bin

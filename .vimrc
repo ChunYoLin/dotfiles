@@ -198,3 +198,4 @@ inoremap <c-h> <left>
 inoremap <c-l> <right>
 " don't give ins-completion-menu messages.
 set shortmess+=c
+set shell=/bin/bash

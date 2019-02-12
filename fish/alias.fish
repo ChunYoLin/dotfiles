@@ -1,1 +1,3 @@
-alias reload_config=". ~/.config/fish/config.fish" 
+function reload_config
+    exec fish
+end
