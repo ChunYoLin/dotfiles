@@ -25,6 +25,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'dag/vim-fish'
+Plugin 'w0rp/ale'
 call vundle#end()
 filetype plugin indent on
 
