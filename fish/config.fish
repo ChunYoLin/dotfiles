@@ -1,7 +1,7 @@
-. ~/.config/fish/color.fish
-. ~/.config/fish/alias.fish
-. ~/.config/fish/git.fish
-. ~/.config/fish/key_binding.fish
+source ~/.config/fish/color.fish
+source ~/.config/fish/alias.fish
+source ~/.config/fish/git.fish
+source ~/.config/fish/key_binding.fish
 
 
 set fish_color_cwd yellow
@@ -26,7 +26,7 @@ function fish_prompt
 end
 
 set -x NVM_DIR "~/.nvm"
-test -s "$NVM_DIR/nvm.sh"  && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# test -s "$NVM_DIR/nvm.sh"  && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # cd with ls
 function chpwd --on-variable PWD
@@ -55,3 +55,4 @@ set -x PATH  "/Users/chunyo/anaconda3/bin:$PATH"
 # golang
 set -x PATH  "$PATH:/Users/chunyo/package/go/bin"
 set -x GOROOT_BOOTSTRAP  "/Users/chunyo/package/go"
+set -x GOPATH "$HOME/go"
