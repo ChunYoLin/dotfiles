@@ -28,8 +28,13 @@ Plugin 'dag/vim-fish'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'thosakwe/vim-flutter'
 call vundle#end()
 filetype plugin indent on
+
+" set <leader>
+let mapleader=","
 
 " ================================================
 " setting for Plugin
@@ -118,7 +123,17 @@ let g:formatters_cpp = ['my_custom_cpp']
 let g:formatdef_autopep8 = "'autopep8  --max-line-length 160 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
 nnoremap <Tab> :Autoformat<CR>
+" dart-vim-plugin--------------------------------
+let dart_style_guide = 2
+" vim-flutter----------------------------------
 
+" Some of these key choices were arbitrary;
+" it's just an example.
+nnoremap <leader>fa :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
 " ================================================
 " setting for vim basic
 
@@ -141,8 +156,6 @@ set incsearch
 set ignorecase
 " highlight searching result
 set hlsearch
-" set <leader>
-let mapleader=","
 " exit visual mode without delay
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -199,3 +212,4 @@ inoremap <c-l> <right>
 " don't give ins-completion-menu messages.
 set shortmess+=c
 set shell=/bin/bash
+set encoding=utf-8

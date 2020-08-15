@@ -55,7 +55,9 @@ set -x TERM screen-256color
 # esac
 #PYTHONPATH
 # set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
-# set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
+set -x  PYTHONPATH "$PYTHONPATH:/home/chunyo/anaconda3/envs/AI/lib/python3.6/site-packages"
+set -x  PYTHONPATH "$PYTHONPATH:/home/chunyo/anaconda3/lib/python3.6/site-packages"
+# set -x  PYTHONPATH "$PYTHONPATH:/home/chunyo/anaconda3/lib/python3.7/site-packages"
 
 # added by Anaconda2 4.2.0 installer
 set -e GNOME_KEYRING_CONTROL
@@ -75,4 +77,5 @@ function nvm
    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 set -x GOPATH ~/go
-set -x PATH $PATH:$GOPATH/bin
+set -x PATH "$PATH:$GOPATH/bin"
+set -x PATH "$PATH:/home/chunyo/flutter/bin"

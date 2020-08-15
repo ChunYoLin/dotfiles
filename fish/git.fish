@@ -79,7 +79,8 @@ function _git-upstream-behind-ahead
 end
 
 function _git-upstream-branch-gone
-    test (git status -s -b | sed -e 's/.* //') = "[gone]"
+    set tmp (git status -s -b | sed -e 's/.* //')
+    test "x$tmp" = "x[gone]"
 end
 
 function _git-hide-status
