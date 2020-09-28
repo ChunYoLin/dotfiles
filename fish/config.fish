@@ -54,28 +54,30 @@ set -x TERM screen-256color
 
 # esac
 #PYTHONPATH
-# set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
-set -x  PYTHONPATH "$PYTHONPATH:/home/chunyo/anaconda3/envs/AI/lib/python3.6/site-packages"
-set -x  PYTHONPATH "$PYTHONPATH:/home/chunyo/anaconda3/lib/python3.6/site-packages"
-# set -x  PYTHONPATH "$PYTHONPATH:/home/chunyo/anaconda3/lib/python3.7/site-packages"
+# set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages://usr/local/google/home/chunyolin/pyvision/src"
+set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/envs/AI/lib/python3.6/site-packages"
+set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/lib/python3.6/site-packages"
+# set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/lib/python3.7/site-packages"
 
 # added by Anaconda2 4.2.0 installer
 set -e GNOME_KEYRING_CONTROL
-set -x  CAFFE_ROOT /home/chunyo/work/caffe
-set -x  PATH "/home/chunyo/anaconda3/bin:$PATH"
-source /home/chunyo/anaconda3/etc/fish/conf.d/conda.fish
+set -x  CAFFE_ROOT //usr/local/google/home/chunyolin/work/caffe
+set -x  PATH "//usr/local/google/home/chunyolin/anaconda3/bin:$PATH"
+source //usr/local/google/home/chunyolin/anaconda3/etc/fish/conf.d/conda.fish
 
 # riscv
-set -x PATH "$PATH:/home/chunyo/.local/riscv/bin"
-set -x PATH "$PATH:/home/chunyo/.local/riscv/riscv32-unknown-elf/bin"
+set -x PATH "$PATH://usr/local/google/home/chunyolin/.local/riscv/bin"
+set -x PATH "$PATH://usr/local/google/home/chunyolin/.local/riscv/riscv32-unknown-elf/bin"
 
 set -x LLVM_CONFIG "/usr/lib/llvm-3.8/bin/llvm-config"
 
-set -x  NVM_DIR "/home/chunyo/.nvm"
+set -x  NVM_DIR "//usr/local/google/home/chunyolin/.nvm"
 
 function nvm
    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 set -x GOPATH ~/go
 set -x PATH "$PATH:$GOPATH/bin"
-set -x PATH "$PATH:/home/chunyo/flutter/bin"
+set -x PATH "$PATH://usr/local/google/home/chunyolin/flutter/bin"
+
+set -x NDK "//usr/local/google/home/chunyolin/android-ndk-r21d/"
