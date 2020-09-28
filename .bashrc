@@ -91,9 +91,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 #
-alias cdb='cd /home/chunyo/work/django/mysite'
-alias sb='source /home/chunyo/.bashrc'
-alias eb='vim /home/chunyo/.bashrc'
+alias cdb='cd /home/chunyolin/work/django/mysite'
+alias sb='source /home/chunyolin/.bashrc'
+alias eb='vim /home/chunyolin/.bashrc'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -184,33 +184,33 @@ export TERM=screen-256color
 
 # esac
 #PYTHONPATH
-# export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
+# export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages:/home/chunyolin/pyvision/src"
 # export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/dist-packages"
 
 # added by Anaconda2 4.2.0 installer
 unset GNOME_KEYRING_CONTROL
-export CAFFE_ROOT=/home/chunyo/work/caffe
+export CAFFE_ROOT=/home/chunyolin/work/caffe
 
 # riscv
-PATH="$PATH:/home/chunyo/.local/riscv/bin"
-PATH="$PATH:/home/chunyo/.local/riscv/riscv32-unknown-elf/bin"
+PATH="$PATH:/home/chunyolin/.local/riscv/bin"
+PATH="$PATH:/home/chunyolin/.local/riscv/riscv32-unknown-elf/bin"
 
 LLVM_CONFIG="/usr/lib/llvm-3.8/bin/llvm-config"
-# export PATH="/home/chunyo/anaconda3/bin:$PATH"  # commented out by conda initialize
+# export PATH="/home/chunyolin/anaconda3/bin:$PATH"  # commented out by conda initialize
 
-export NVM_DIR="/home/chunyo/.nvm"
+export NVM_DIR="/home/chunyolin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/chunyo/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/chunyolin/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/chunyo/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/chunyo/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/chunyolin/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/chunyolin/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/chunyo/anaconda3/bin:$PATH"
+        export PATH="/home/chunyolin/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
