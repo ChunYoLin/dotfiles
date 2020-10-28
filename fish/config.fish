@@ -81,3 +81,7 @@ set -x PATH "$PATH:$GOPATH/bin"
 set -x PATH "$PATH://usr/local/google/home/chunyolin/flutter/bin"
 
 set -x NDK "//usr/local/google/home/chunyolin/android-ndk-r21d/"
+
+set -x PATH "$PATH://usr/local/google/home/chunyolin/Vulkansdk/x86_64/bin"
+
+set -x PATH "$PATH:/usr/local/google/home/chunyolin/.local/bin"
