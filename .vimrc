@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/fonts'
 Plugin 'vim-airline/vim-airline'
@@ -26,6 +26,8 @@ Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'dag/vim-fish'
 Plugin 'w0rp/ale'
+Plugin 'dart-lang/dart-vim-plugin'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -70,6 +72,9 @@ let g:ycm_warning_symbol = '>*'
 let g:ycm_show_diagnostics_ui = 0
 " toggle completion modes inside of insert mode through that key
 let g:ycm_semantic_completion_toggle = '<c-f>'
+
+" ALE ----------------------
+let g:ale_python_pylint_options = '--errors-only'
 
 " NerdTree -------------------
 " open a NERDTree automatically when vim starts up if no files were specified

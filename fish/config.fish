@@ -43,15 +43,25 @@ set -x LD_LIBRARY_PATH  "$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/c
 set -x TERM  screen-256color
 
 #PYTHONPATH
-set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/site-packages:/home/chunyo/pyvision/src"
+set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/site-packages:/home/chunyolin/pyvision/src"
 set -x PYTHONPATH  "$PYTHONPATH:/usr/local/lib/python2.7/dist-packages"
 
 # added by Anaconda2 4.2.0 installer
-# set -x PATH  "/home/chunyo/anaconda2/bin:$PATH"
+# set -x PATH  "/home/chunyolin/anaconda2/bin:$PATH"
 set -e GNOME_KEYRING_CONTROL
 set -x CLICOLOR  'true'
 # added by Anaconda3 installer
-set -x PATH  "/Users/chunyo/anaconda3/bin:$PATH"
+set -x PATH  "/Users/chunyolin/anaconda3/bin:$PATH"
 # golang
-set -x PATH  "$PATH:/Users/chunyo/package/go/bin"
-set -x GOROOT_BOOTSTRAP  "/Users/chunyo/package/go"
+set -x PATH  "$PATH:/Users/chunyolin/package/go/bin"
+set -x GOROOT_BOOTSTRAP  "/Users/chunyolin/package/go"
+set -x PATH  "$PATH:/Users/chunyolin/flutter/bin"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /Users/chunyolin/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+set -x LD_LIBRARY_PATH $HOME/homebrew/lib:$LD_LIBRARY_PATH
+set -x PATH $HOME/homebrew/bin:$PATH
+set -x PATH "$PATH":"$HOME/flutter/.pub-cache/bin"
