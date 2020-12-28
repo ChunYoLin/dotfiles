@@ -82,6 +82,17 @@ set -x PATH "$PATH://usr/local/google/home/chunyolin/flutter/bin"
 
 set -x NDK "//usr/local/google/home/chunyolin/android-ndk-r21d/"
 
-set -x PATH "$PATH://usr/local/google/home/chunyolin/Vulkansdk/x86_64/bin"
+set -x VULKAN_SDK "//usr/local/google/home/chunyolin/vulkan/1.2.148.1/x86_64/"
+set -x PATH "$VULKAN_SDK/bin:$PATH"
+set -x LD_LIBRARY_PATH "$VULKAN_SDK/lib:$LD_LIBRARY_PATH"
+set -x VK_LAYER_PATH "$VULKAN_SDK/etc/vulkan/explicit_layer.d"
 
 set -x PATH "$PATH:/usr/local/google/home/chunyolin/.local/bin"
+
+set -x ANDROID_SDK_HOME "$HOME/Android/Sdk"
+set -x ANDROID_NDK_HOME "$HOME/Android/Sdk/ndk/21.3.6528147"
+set -x PATH "$ANDROID_SDK_HOME:$PATH"
+set -x PATH "$ANDROID_NDK_HOME:$PATH"
+set -x PATH "$ANDROID_SDK_HOME/build-tools/30.0.2:$PATH"
+set -x PATH "$PATH":"$HOME/flutter/.pub-cache/bin"
+set -x PATH "$PATH:/usr/lib/dart/bin"

@@ -162,6 +162,12 @@ let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 "
 " =================================================================
+"
+" google
+source /usr/share/vim/google/google.vim
+Glug piper plugin[mappings]
+Glug g4 prompt=1
+
 " setting for vim basic
 set expandtab
 set tabstop=4
