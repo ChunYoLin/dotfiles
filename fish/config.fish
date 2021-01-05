@@ -30,8 +30,8 @@ test -s "$NVM_DIR/nvm.sh"  && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # cd with ls
 function chpwd --on-variable PWD
-  status --is-command-substitution; and return
-  ll
+    status --is-command-substitution; and return
+    ll
 end
 
 # opencv library path
@@ -50,7 +50,7 @@ set -x TERM screen-256color
 
 # auto launch tmux when new bash being created
 # case $- in *i*)
-	# [ -z "$TMUX" ] && exec tmux 
+# [ -z "$TMUX" ] && exec tmux
 
 # esac
 #PYTHONPATH
@@ -74,7 +74,7 @@ set -x LLVM_CONFIG "/usr/lib/llvm-3.8/bin/llvm-config"
 set -x  NVM_DIR "//usr/local/google/home/chunyolin/.nvm"
 
 function nvm
-   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 set -x GOPATH ~/go
 set -x PATH "$PATH:$GOPATH/bin"
@@ -96,3 +96,7 @@ set -x PATH "$ANDROID_NDK_HOME:$PATH"
 set -x PATH "$ANDROID_SDK_HOME/build-tools/30.0.2:$PATH"
 set -x PATH "$PATH":"$HOME/flutter/.pub-cache/bin"
 set -x PATH "$PATH:/usr/lib/dart/bin"
+if status --is-interactive
+    gcertstatus --check_remaining=60m >/dev/null 2>&1
+    or gcert -s
+end
