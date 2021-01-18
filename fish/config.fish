@@ -55,15 +55,15 @@ set -x TERM screen-256color
 # esac
 #PYTHONPATH
 # set -x  PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages://usr/local/google/home/chunyolin/pyvision/src"
-set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/envs/AI/lib/python3.6/site-packages"
-set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/lib/python3.6/site-packages"
+# set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/envs/AI/lib/python3.6/site-packages"
+# set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/lib/python3.6/site-packages"
 # set -x  PYTHONPATH "$PYTHONPATH://usr/local/google/home/chunyolin/anaconda3/lib/python3.7/site-packages"
 
 # added by Anaconda2 4.2.0 installer
 set -e GNOME_KEYRING_CONTROL
 set -x  CAFFE_ROOT //usr/local/google/home/chunyolin/work/caffe
-set -x  PATH "//usr/local/google/home/chunyolin/anaconda3/bin:$PATH"
-source //usr/local/google/home/chunyolin/anaconda3/etc/fish/conf.d/conda.fish
+# set -x  PATH "//usr/local/google/home/chunyolin/anaconda3/bin:$PATH"
+# source //usr/local/google/home/chunyolin/anaconda3/etc/fish/conf.d/conda.fish
 
 # riscv
 set -x PATH "$PATH://usr/local/google/home/chunyolin/.local/riscv/bin"
@@ -100,3 +100,4 @@ if status --is-interactive
     gcertstatus --check_remaining=60m >/dev/null 2>&1
     or gcert -s
 end
+set -x M5_PATH "/usr/local/google/home/chunyolin/m5/"
