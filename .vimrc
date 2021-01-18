@@ -24,7 +24,6 @@ Plugin 'othree/html5.vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-surround'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'dag/vim-fish'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
@@ -33,6 +32,8 @@ Plugin 'thosakwe/vim-flutter'
 Plugin 'kbenzie/vim-spirv'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tikhomirov/vim-glsl'
+Plugin 'dag/vim-fish'
+Plugin 'w0rp/ale'
 call vundle#end()
 filetype plugin indent on
 

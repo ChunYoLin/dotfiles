@@ -8,7 +8,8 @@ set fish_color_cwd yellow
 
 function fish_prompt
     set_color blue
-    printf "%s " (date +%D\ %H:%M)
+    printf "%s " (date +%H:%M:%S)
+    printf "\n"
     set last_status $status
     set_color cyan
     printf '%s' (whoami)
