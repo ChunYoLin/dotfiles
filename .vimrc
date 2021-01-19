@@ -27,6 +27,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'dag/vim-fish'
 Plugin 'w0rp/ale'
 Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 filetype plugin indent on
@@ -72,9 +73,15 @@ let g:ycm_warning_symbol = '>*'
 let g:ycm_show_diagnostics_ui = 0
 " toggle completion modes inside of insert mode through that key
 let g:ycm_semantic_completion_toggle = '<c-f>'
+" vim autoformat
+noremap <TAB> :Autoformat<CR>
 
 " ALE ----------------------
-let g:ale_python_pylint_options = '--errors-only'
+let g:ale_python_pylint_options = '--errors-only, --ignore=E501'
+let g:ale_python_flake8_options = '--ignore=E501,E226'
+
+" Dart ---------------------
+let g:dart_style_guide = 2
 
 " NerdTree -------------------
 " open a NERDTree automatically when vim starts up if no files were specified
