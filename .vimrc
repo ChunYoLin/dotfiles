@@ -53,6 +53,42 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#branch#enabled=1
 " YouCompleteMe -------------------
+let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_previous_completion=['<c-p>']
+
+set completeopt=menu  "關閉preview window
+let g:ycm_confirm_extra_conf=0 "關閉載入.ycm_extra_conf.py提示
+let g:ycm_collect_identifiers_from_tags_files=1 " 開啟 YCM 基於標籤引擎
+let g:ycm_min_num_of_chars_for_completion=1 " 從第1個鍵入字元就開始羅列匹配項
+let g:ycm_cache_omnifunc=0 " 禁止快取匹配項,每次都重新生成匹配項
+
+let g:ycm_seed_identifiers_with_syntax=1 " 語法關鍵字補全
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR> "force recomile with syntastic
+let g:ycm_complete_in_comments = 1 "在註釋輸入中也能補全
+let g:ycm_complete_in_strings = 1 "在字串輸入中也能補全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0 "註釋和字串中的文字也會被收入補全
+
+let g:ycm_max_num_identifier_candidates = 50
+let g:ycm_auto_trigger = 1
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>'
+
+"sub commands
+"YcmCompleter RefactorRename :重新命名
+"YcmCompleter GoToSymbol  
+nnoremap <leader>go :YcmCompleter GoTo<CR> "跳轉
+nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR> "跳轉到定義或宣告
+nnoremap <leader>gt :YcmCompleter GetType<CR> "get型別
+
+nmap gi :YcmCompleter GoToInclude<CR>   "跳轉到include、宣告或定義
+nmap gm :YcmCompleter GoToImprecise<CR> "跳轉到實現
+nmap gr :YcmCompleter GoToReferences<CR> "跳轉到引用
+nmap fi :YcmCompleter FixIt<CR> "根據Ycm的建議修復錯誤
+
+nnoremap <F6> :YcmForceCompileAndDiagnostics<CR> "重新編譯和診斷
+highlight Pmenu ctermfg=4 ctermbg=8 guifg=#ffffff guibg=#000000  "提示不再是粉紅色(pink)
+
 let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = 'python3'
@@ -60,16 +96,12 @@ let g:ycm_complete_in_comments=1
 " let g:ycm_collect_identifiers_from_tags_files=1
 " complete from word 0
 let g:ycm_min_num_of_chars_for_completion=1
-" no pop up window
-set completeopt-=preview
 " no buffer
 let g:ycm_cache_omnifunc=0
 " syntax completion
 let g:ycm_seed_identifiers_with_syntax=1
 " Ctrl-space to Ctrl-a
 let g:ycm_key_invoke_completion = '<C-a>'
-" "+g to the definition of cursor word
-nmap ,g :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 " show warning and error
 let g:ycm_max_diagnostics_to_display = 30
 " set max number of completions
@@ -81,8 +113,8 @@ let g:ycm_warning_symbol = '>*'
 let g:ycm_show_diagnostics_ui = 0
 " toggle completion modes inside of insert mode through that key
 let g:ycm_semantic_completion_toggle = '<c-f>'
-let g:ycm_auto_trigger = 0
-let g:ycm_auto_hover = ""
+" let g:ycm_auto_trigger = 0
+" let g:ycm_auto_hover = ""
 nmap <leader>D <plug>(YCMHover)
 
 " NerdTree -------------------
@@ -125,7 +157,7 @@ let g:tex_flavor='latex'
 " vim-tagbar
 nmap <F12> :TagbarToggle<CR>
 " vim-autoformat---------------------
-let g:formatdef_my_custom_cpp = '"astyle --mode=c --style=allman --indent-classes --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --pad-comma --pad-header"'
+let g:formatdef_my_custom_cpp = '"astyle --mode=c --style=kr --indent=spaces=4 --indent-switches --indent-cases --indent-namespaces --pad-comma --pad-header -xG"'
 let g:formatters_cpp = ['my_custom_cpp']
 let g:formatdef_autopep8 = "'autopep8  --max-line-length 160 - --range '.a:firstline.' '.a:lastline"
 let g:formatters_python = ['autopep8']
@@ -165,9 +197,9 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 " =================================================================
 "
 " google
-source /usr/share/vim/google/google.vim
-Glug piper plugin[mappings]
-Glug g4 prompt=1
+" source /usr/share/vim/google/google.vim
+" Glug piper plugin[mappings]
+" Glug g4 prompt=1
 
 " setting for vim basic
 set expandtab
@@ -232,7 +264,6 @@ nnoremap <Leader>> :vertical resize +10<CR>
 set foldmethod=syntax
 " clipboard shared with shell
 set clipboard=unnamedplus
-set clipboard=unnamed
 " set backspace attr
 set backspace=indent,eol,start
 " set tabstop for specefic filetype
@@ -246,3 +277,5 @@ inoremap <c-l> <right>
 set shortmess+=c
 set shell=/bin/bash
 set encoding=utf-8
+nnoremap <leader>cd :cd %:p:h<CR>
+autocmd BufEnter *.isa :setlocal filetype=python
