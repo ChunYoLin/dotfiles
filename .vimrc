@@ -33,7 +33,11 @@ Plugin 'kbenzie/vim-spirv'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'dag/vim-fish'
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf'
+Plugin 'vhda/verilog_systemverilog.vim'
+Plugin 'rickhowe/diffchar.vim'
+Plugin 'kshenoy/vim-signature'
 call vundle#end()
 filetype plugin indent on
 
@@ -48,7 +52,7 @@ let mapleader=","
 set laststatus=2
 " enable powerline-fonts
 let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 " let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#branch#enabled=1
@@ -68,7 +72,8 @@ let g:ycm_complete_in_comments = 1 "在註釋輸入中也能補全
 let g:ycm_complete_in_strings = 1 "在字串輸入中也能補全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0 "註釋和字串中的文字也會被收入補全
 
-let g:ycm_max_num_identifier_candidates = 50
+let g:ycm_max_num_identifier_candidates = 10
+let g:ycm_max_num_candidates = 10
 let g:ycm_auto_trigger = 1
 
 let g:ycm_error_symbol = '>>'
@@ -77,6 +82,7 @@ let g:ycm_warning_symbol = '>'
 "sub commands
 "YcmCompleter RefactorRename :重新命名
 "YcmCompleter GoToSymbol  
+let g:ycm_goto_buffer_command = 'new-tab'
 nnoremap <leader>go :YcmCompleter GoTo<CR> "跳轉
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR> "跳轉到定義或宣告
 nnoremap <leader>gt :YcmCompleter GetType<CR> "get型別
@@ -279,3 +285,14 @@ set shell=/bin/bash
 set encoding=utf-8
 nnoremap <leader>cd :cd %:p:h<CR>
 autocmd BufEnter *.isa :setlocal filetype=python
+" scons
+au BufNewFile,BufRead SCons* set filetype=scons
+
+nmap <Leader>zs :tab cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>zg :tab cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>zc :tab cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>zt :tab cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>ze :tab cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>zf :tab cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <Leader>zi :tab cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <Leader>zd :tab cs find d <C-R>=expand("<cword>")<CR><CR>

@@ -12,11 +12,11 @@ function fish_prompt
     printf "\n"
     set last_status $status
     set_color cyan
-    printf '%s' (whoami)
+    printf '%s ' (whoami)
     tput setaf 8
-    printf '@'
-    tput setaf 172
-    printf '%s ' (hostname)
+    # printf '@'
+    # tput setaf 172
+    # printf '%s ' (hostname)
     set_color $fish_color_cwd
 
     set -g fish_prompt_pwd_dir_length 0
@@ -79,7 +79,7 @@ function nvm
 end
 set -x GOPATH ~/go
 set -x PATH "$PATH:$GOPATH/bin"
-set -x PATH "$PATH://usr/local/google/home/chunyolin/flutter/bin"
+set -x PATH "//usr/local/google/home/chunyolin/flutter/bin:$PATH"
 
 set -x NDK "//usr/local/google/home/chunyolin/android-ndk-r21d/"
 
@@ -88,7 +88,7 @@ set -x PATH "$VULKAN_SDK/bin:$PATH"
 set -x LD_LIBRARY_PATH "$VULKAN_SDK/lib:$LD_LIBRARY_PATH"
 set -x VK_LAYER_PATH "$VULKAN_SDK/etc/vulkan/explicit_layer.d"
 
-set -x PATH "$PATH:/usr/local/google/home/chunyolin/.local/bin"
+set -x PATH "/usr/local/google/home/chunyolin/.local/bin:$PATH"
 
 set -x ANDROID_SDK_HOME "$HOME/Android/Sdk"
 set -x ANDROID_NDK_HOME "$HOME/Android/Sdk/ndk/21.3.6528147"
@@ -102,3 +102,4 @@ if status --is-interactive
     or gcert -s
 end
 set -x M5_PATH "/usr/local/google/home/chunyolin/m5/"
+set -x FZF_DEFAULT_COMMAND "fdfind --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,tmp} --type f"
