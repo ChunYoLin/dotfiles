@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'powerline/fonts'
 Plugin 'vim-airline/vim-airline'
@@ -56,6 +56,7 @@ let g:airline#extensions#tabline#enabled = 0
 " let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#searchcount#enabled = 0
 " YouCompleteMe -------------------
 let g:ycm_key_list_select_completion=['<c-n>']
 let g:ycm_key_list_previous_completion=['<c-p>']
@@ -81,7 +82,7 @@ let g:ycm_warning_symbol = '>'
 
 "sub commands
 "YcmCompleter RefactorRename :重新命名
-"YcmCompleter GoToSymbol  
+"YcmCompleter GoToSymbol
 let g:ycm_goto_buffer_command = 'new-tab'
 nnoremap <leader>go :YcmCompleter GoTo<CR> "跳轉
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR> "跳轉到定義或宣告
@@ -192,7 +193,7 @@ let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 " 检测 ~/.cache/tags 不存在就新建 "
 if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
+    silent! call mkdir(s:vim_tags, 'p')
 endif
 
 " 配置 ctags 的参数 "
@@ -296,3 +297,41 @@ nmap <Leader>ze :tab cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>zf :tab cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Leader>zi :tab cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>zd :tab cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" cscope
+
+function! Create_cscope_file(execfile)
+    exe "! bash" a:execfile a:execfile
+endfunction
+
+function! Create_cscope_out(cscope_files)
+    exe "! cscope -bRq -i" a:cscope_files
+endfunction
+
+if has("cscope")
+    let cscope_exec=findfile("cscope.sh", ".;")
+    if !empty(cscope_exec)
+        if cscope_exec ==? "cscope.sh"
+            set csre
+        endif
+        silent call Create_cscope_file(cscope_exec)
+        let cscope_files=findfile("cscope.files", ".;")
+        if !empty(cscope_files) && filereadable(cscope_files)
+            silent call Create_cscope_out(cscope_files)
+            let cscope_out=findfile("cscope.out", ".;")
+            if !empty(cscope_out) && filereadable(cscope_out)
+                silent exe "cs add" cscope_out
+            endif
+        endif
+    endif
+endif
+
+noremap <leader>cs :cs find s 
+noremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+noremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+noremap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
