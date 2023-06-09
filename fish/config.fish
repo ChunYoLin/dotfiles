@@ -103,3 +103,6 @@ if status --is-interactive
 end
 set -x M5_PATH "/usr/local/google/home/chunyolin/m5/"
 set -x FZF_DEFAULT_COMMAND "fdfind --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,tmp} --type f"
+set -x PATH "$PATH:/google/data/rw/users/ch/chunyolin/bin"
+set -x CC clang
+set -x CXX clang++

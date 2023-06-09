@@ -298,40 +298,40 @@ nmap <Leader>zf :tab cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <Leader>zi :tab cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <Leader>zd :tab cs find d <C-R>=expand("<cword>")<CR><CR>
 
-" cscope
+" " cscope
 
-function! Create_cscope_file(execfile)
-    exe "! bash" a:execfile a:execfile
-endfunction
+" function! Create_cscope_file(execfile)
+    " exe "! bash" a:execfile a:execfile
+" endfunction
 
-function! Create_cscope_out(cscope_files)
-    exe "! cscope -bRq -i" a:cscope_files
-endfunction
+" function! Create_cscope_out(cscope_files)
+    " exe "! cscope -bRq -i" a:cscope_files
+" endfunction
 
-if has("cscope")
-    let cscope_exec=findfile("cscope.sh", ".;")
-    if !empty(cscope_exec)
-        if cscope_exec ==? "cscope.sh"
-            set csre
-        endif
-        silent call Create_cscope_file(cscope_exec)
-        let cscope_files=findfile("cscope.files", ".;")
-        if !empty(cscope_files) && filereadable(cscope_files)
-            silent call Create_cscope_out(cscope_files)
-            let cscope_out=findfile("cscope.out", ".;")
-            if !empty(cscope_out) && filereadable(cscope_out)
-                silent exe "cs add" cscope_out
-            endif
-        endif
-    endif
-endif
+" if has("cscope")
+    " let cscope_exec=findfile("cscope.sh", ".;")
+    " if !empty(cscope_exec)
+        " if cscope_exec ==? "cscope.sh"
+            " set csre
+        " endif
+        " silent call Create_cscope_file(cscope_exec)
+        " let cscope_files=findfile("cscope.files", ".;")
+        " if !empty(cscope_files) && filereadable(cscope_files)
+            " silent call Create_cscope_out(cscope_files)
+            " let cscope_out=findfile("cscope.out", ".;")
+            " if !empty(cscope_out) && filereadable(cscope_out)
+                " silent exe "cs add" cscope_out
+            " endif
+        " endif
+    " endif
+" endif
 
-noremap <leader>cs :cs find s 
-noremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-noremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-noremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-noremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-noremap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-noremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-noremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-noremap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
+" noremap <leader>cs :cs find s 
+" noremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+" noremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+" noremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+" noremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+" noremap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+" noremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+" noremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+" noremap <C-\>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
