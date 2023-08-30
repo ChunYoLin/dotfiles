@@ -57,6 +57,7 @@ let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#searchcount#enabled = 0
+let g:airline_extensions = []
 " YouCompleteMe -------------------
 let g:ycm_key_list_select_completion=['<c-n>']
 let g:ycm_key_list_previous_completion=['<c-p>']
